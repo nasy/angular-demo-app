@@ -1,0 +1,68 @@
+.content {
+  background-color: #FAF9F8;
+  width: 100%; height: 100%;
+  position: absolute; top: 0; left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .title {
+    font-family: mandrel-normal, sans-serif;
+    font-weight: 800;
+    font-style: normal;
+    font-size: 28px;
+    line-height: 30px;
+  }
+  .subtitle {
+    font-family: mandrel-normal, sans-serif;
+    font-weight: 200;
+    font-style: normal;
+    font-size: 18px;
+    line-height: 60px;
+    margin-bottom: 20px;
+  }
+
+  .back-button {
+    min-width: 200px;
+    background: grey;
+    padding: 13px 16px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: #fff;
+    border-radius: 4px;
+    border: none;
+    margin-top: 100px;
+    cursor: pointer;
+    text-align: center;
+  }
+  .pdf-button {
+    padding: 9px 12px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: #fff;
+    background: #00B074;
+    border-radius: 4px;
+    border: none;
+    margin: 10px;
+    cursor: pointer;
+    text-align: center;
+  }
+  td {
+    font-family: mandrel-normal, sans-serif;
+    font-weight: 200;
+    font-style: normal;
+    padding-top: 20px;
+    min-width: 200px;
+  }
+  .options {
+    margin-top: 40px;
+  }
+  .error-message {
+    margin-top: 20px;
+    background: #F1846D;
+    padding: 20px;
+    color: white;
+  }
+}

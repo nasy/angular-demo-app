@@ -1,6 +1,15 @@
 # VisageApp
 
+This is a sample Angular App project where you can submit profiles and list your submitted profiles.
+
+Some tests have been created using Karma. However others have been skipped for this demo.
+
+The app has been deployed to Cloud Run using a docker image with a pre-configured Apache server.
+
+# Project Tech
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.1.
+
 
 ## Development server
 

@@ -1,0 +1,72 @@
+<div class="content">
+  <div class="section">
+    <div class="title">Submit Profile</div>
+    <div class="subtitle">To start please upload your CV in Profile</div>
+    <form class="form-file">
+      <div>
+        <label class="input-label">Select a PDF document</label>
+        <input
+          #fileUpload
+          type="file"
+          (change)="onFileSelect($event)"
+          class="form-control"
+          id="file"
+          required
+          name="file">
+      </div>
+      <div *ngIf="uploadedFileUrl" class="success-message">
+        The file has been added successfully
+      </div>
+      <div *ngIf="!showStepTwo" class="options">
+        <a (click)="goBack()" class="back-button">Go Back</a>
+        <a (click)="nextStep()" class="submit-button">Continue</a>
+      </div>
+    </form>
+    <form *ngIf="showStepTwo" class="form-details">
+      <div class="form-field">
+        <label class="input-label">First Name</label>
+        <input type="text"
+          class="form-control"
+          id="firstName"
+          required
+          [(ngModel)]="profileModel.firstName"
+          name="firstName">
+      </div>
+      <div class="form-field">
+        <label class="input-label">Last Name</label>
+        <input type="text"
+        class="form-control"
+        id="lastName"
+        required
+        [(ngModel)]="profileModel.lastName"
+        name="lastName">
+      </div>
+      <div class="form-field">
+        <label class="input-label">Notes</label>
+        <input type="text"
+        class="form-control"
+        id="notes"
+        required
+        [(ngModel)]="profileModel.notes"
+        name="notes">
+      </div>
+      <div *ngIf="success" class="success-message">
+        Your profile has been sent. <span (click)="goToProfiles()">View profiles</span>
+      </div>
+      <div *ngIf="error" class="error-message">
+       There was an error sending your profile. Please try again.
+      </div>
+      <div *ngIf="formErrors" class="error-message">
+        Please fill your first name and last name.
+       </div>
+       <div *ngIf="fileErrors" class="error-message">
+        Please select a valid PDF file.
+       </div>
+      <div *ngIf="!saving" class="options">
+        <a (click)="goBack()" class="back-button">Go Back</a>
+        <a (click)="send()" class="submit-button">Let's Go!</a>
+      </div>
+    </form>
+  </div>
+</div>
+
