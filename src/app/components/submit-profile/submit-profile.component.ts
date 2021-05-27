@@ -8,6 +8,7 @@ interface ProfileModel {
   firstName: string,
   lastName: string,
   notes: string
+  jobTitle: string;
 }
 
 @Component({
@@ -19,7 +20,8 @@ export class SubmitProfileComponent implements OnInit {
   public profileModel: ProfileModel = {
     firstName: '',
     lastName: '',
-    notes: ''
+    notes: '',
+    jobTitle: '',
   };
   public saving = false;
   public sessionId: string;
@@ -30,6 +32,7 @@ export class SubmitProfileComponent implements OnInit {
   public formErrors = false;
   public fileErrors = false;
   public uploadedFileUrl: string|null = null;
+  public showHellMessage = false;
   constructor(
     public router: Router,
     public profileService: ProfileService,
@@ -88,14 +91,24 @@ export class SubmitProfileComponent implements OnInit {
       new Profile(
         null,
         this.profileModel.firstName,
-        this.profileModel.firstName,
+        this.profileModel.lastName,
+        this.profileModel.jobTitle,
         this.profileModel.notes,
-        this.uploadedFileUrl as string
+        this.uploadedFileUrl as string,
+        this.sessionId
       )
     )
     .subscribe((r) => {
       this.saving = false;
       this.success = true;
+      this.profileService.countProfiles( this.sessionId)
+      .subscribe((total: number) => {
+        if(total == 10) {
+          this.showHellMessage = true;
+        }
+      }, (e) => {
+        this.error = true;
+      });
     }, (e) => {
       this.error = true;
     });

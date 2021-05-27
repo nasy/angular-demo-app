@@ -6,14 +6,16 @@
       <table style="width:100%">
         <tr>
           <td>Name</td>
+          <td>Job Title</td>
           <td>Notes</td>
           <td>File</td>
         </tr>
         <tr *ngFor="let profile of profiles" >
           <td>{{profile.getFirstName()}} {{profile.getLastName()}}</td>
+          <td>{{profile.getJobTitle()}}</td>
           <td>{{profile.getNotes()}}</td>
           <td>
-            <a (click)="viewPdf(profile.getCVUrl())" class="pdf-button">View PDF</a>
+            <a (click)="viewPdf(profile.getcvPath())" class="pdf-button">View PDF</a>
           </td>
         </tr>
         <tr *ngIf="profiles.length === 0" >

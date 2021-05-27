@@ -26,8 +26,9 @@ export class ProfileService {
             element.id,
             element.firstName,
             element.lastName,
+            element.jobTitle,
             element.notes,
-            element.cvUrl,
+            element.cvPath,
           ))
         });
         observer.next(profiles);
@@ -35,7 +36,23 @@ export class ProfileService {
     });
   }
   create(profile: Profile) {
-    return this.http.post(environment.api_endpoint + 'profiles',  JSON.stringify(profile), this.httpOptions);
+    return this.http.post(
+      environment.api_endpoint + 'profiles',
+      profile, {
+      headers: new HttpHeaders({
+        'content-type': 'application/json',
+        'Accept': 'application/json'
+      })
+    });
+  }
+  countProfiles(sessionId: string) : Observable<number>{
+    return new Observable((observer) => {
+      return this.http.get(
+        environment.api_endpoint + 'profiles/' + sessionId + '/total'
+      ).subscribe((data: any) => {
+        observer.next(data);
+      });
+    });
   }
   postFile(sessionId: string, fileToUpload: File): Observable<string|null> {
     return new Observable((observer) => {

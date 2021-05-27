@@ -42,6 +42,15 @@
         name="lastName">
       </div>
       <div class="form-field">
+        <label class="input-label">Job Title</label>
+        <input type="text"
+        class="form-control"
+        id="jobTitle"
+        required
+        [(ngModel)]="profileModel.jobTitle"
+        name="jobTitle">
+      </div>
+      <div class="form-field">
         <label class="input-label">Notes</label>
         <input type="text"
         class="form-control"
@@ -62,9 +71,12 @@
        <div *ngIf="fileErrors" class="error-message">
         Please select a valid PDF file.
        </div>
+       <div *ngIf="showHellMessage" class="success-message">
+        Every day feels like I’ve died and gone to hell
+       </div>
       <div *ngIf="!saving" class="options">
         <a (click)="goBack()" class="back-button">Go Back</a>
-        <a (click)="send()" class="submit-button">Let's Go!</a>
+        <a *ngIf="!success" (click)="send()" class="submit-button">Let's Go!</a>
       </div>
     </form>
   </div>
